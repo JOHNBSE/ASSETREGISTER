@@ -25,4 +25,4 @@ async function fetchDataAndDisplay(url) {
   }
 }
 
-fetchDataAndDisplay("http://localhost:5000/api/v1/viewConsumables");
+fetchDataAndDisplay("http://localhost:5000/api/v1/viewConsumables")
