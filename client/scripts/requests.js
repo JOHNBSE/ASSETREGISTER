@@ -2,18 +2,9 @@ const openRequests = document.getElementById("openRequests");
 const closedRequests = document.getElementById("closedRequests");
 
 let btnArr;
-async function fetchDataAndDisplay(url, option) {
-  try {
-    const response = await fetch(url);
-    if (!response.ok) {
-      throw new Error("Network response was not OK");
-    }
 
-    const data = await response.json();
-
-    // tableBody.innerHTML = "";
-    data[`${option}`].forEach((item) => {
-      const dateRequested = new Date(item.date_requested);
+    export default function  formatDate(date){
+      const dateRequested = new Date(date);
       const formattedDate = `${dateRequested.getFullYear()}-${(
         dateRequested.getMonth() + 1
       )
@@ -31,13 +22,31 @@ async function fetchDataAndDisplay(url, option) {
         .getSeconds()
         .toString()
         .padStart(2, "0")}`;
+
+      return formattedDate;
+    };
+
+async function fetchDataAndDisplay(url, option) {
+
+  
+  try {
+    const response = await fetch(url);
+    if (!response.ok) {
+      throw new Error("Network response was not OK");
+    }
+
+    const data = await response.json();
+
+
+    // tableBody.innerHTML = "";
+    data[`${option}`].forEach((item) => {
       const row = document.createElement("tr");
       row.innerHTML = `
                 <td>${item.title}</td>
-                <td>${formattedDate}</td>
+                <td>${formatDate(item.date_requested)}</td>
                 <td>${item.service_required}</td>
                 <td>${item.name}</td>
-                <td>${item.timeout}</td>
+                <td>${formatDate(item.timeout)}</td>
                 <td>${item.status}</td>
                 <td><button id=${item.requestID} class="buttons">${
         option === "openRequests" ? "Close" : "Closed"
@@ -79,7 +88,7 @@ const updateRequests = async (btn) => {
         "Content-Type": "Application/json",
       },
     }).then(() => {
-      location.reload()
+      location.reload();
     });
   } catch (err) {
     console.log(err);

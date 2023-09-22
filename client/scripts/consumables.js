@@ -1,4 +1,30 @@
+// import {formatDate} from './dateFormat';
+
 const tableBody = document.getElementById("consumablesTable");
+
+function formatDate(date) {
+  const dateRequested = new Date(date);
+  const formattedDate = `${dateRequested.getFullYear()}-${(
+    dateRequested.getMonth() + 1
+  )
+    .toString()
+    .padStart(2, "0")}-${dateRequested
+    .getDate()
+    .toString()
+    .padStart(2, "0")} ${dateRequested
+    .getHours()
+    .toString()
+    .padStart(2, "0")}:${dateRequested
+    .getMinutes()
+    .toString()
+    .padStart(2, "0")}:${dateRequested
+    .getSeconds()
+    .toString()
+    .padStart(2, "0")}`;
+
+  return formattedDate;
+}
+
 
 async function fetchDataAndDisplay(url) {
   try {
@@ -16,7 +42,7 @@ async function fetchDataAndDisplay(url) {
                 <td>${item.name}</td>
                 <td>${item.category_name}</td>
                 <td>${item.quantity}</td>
-                <td>${item.purchase_date}</td>
+                <td>${formatDate(item.purchase_date)}</td>
             `;
       tableBody.appendChild(row);
     });
@@ -25,4 +51,4 @@ async function fetchDataAndDisplay(url) {
   }
 }
 
-fetchDataAndDisplay("http://localhost:5000/api/v1/viewConsumables")
+fetchDataAndDisplay("http://localhost:5000/api/v1/viewConsumables");

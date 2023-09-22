@@ -1,46 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>New Item</title>
-    <link rel="stylesheet" href="../css/form.css">
-</head>
-<body>
-   <div class="wrapper">
-   <div class="title">
-    ADD NEW ASSET
-   </div>
-    <div class="form">
+    <link rel="stylesheet" href="../css/form.css" />
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="title">ADD NEW ASSET</div>
+      <div class="form">
         <div class="input_field">
-            <label>Name</label>
-            <input type="text" class="input">
+          <label>Name</label>
+          <input type="text" id="name" class="input" />
         </div>
         <div class="input_field">
-            <label>Category</label>
-            <input type="text" class="input">
+          <label>Category</label>
+          <input type="text" id="category" class="input" />
         </div>
         <div class="input_field">
-            <label>Model No</label>
-            <input type="text" class="input">
+          <label>Model</label>
+          <input type="text" id="model" class="input" />
         </div>
         <div class="input_field">
-            <label>Serial No</label>
-            <input type="text" class="input">
+          <label>Serial No</label>
+          <input type="text" id="serial_no" class="input" />
         </div>
         <div class="input_field">
-            <label>Location</label>
-            <input type="text" class="input">
+          <label>Location</label>
+          <input type="text" id="location" class="input" />
         </div>
         <div class="input_field">
-            <label>Total</label>
-            <input type="text" class="input">
+          <label>Status</label>
+          <input type="text" id="status" class="input" />
         </div>
         <div class="input_field">
-    
-            <input type="submit" value="ADD" class="btn">
+          <input type="submit" value="ADD" id="submitBtn" class="btn" />
         </div>
+      </div>
     </div>
-   </div> 
-</body>
+    <script src="../scripts/assets.js"></script>
+  </body>
 </html>
